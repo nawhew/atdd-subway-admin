@@ -59,7 +59,7 @@ public class SectionAcceptanceTest extends AcceptanceTest {
         // then
         // 지하철 노선이 추가 됨
         assertThat(sectionAddResponse.statusCode()).isEqualTo(HttpStatus.OK.value());
-        assertThat(findUpdateLineResponse.getStations().size()).isEqualTo(3);
+        assertThat(findUpdateLineResponse.getStations()).hasSize(3);
         assertThat(findUpdateLineResponse.getStations().stream().map(StationResponse::getName))
                 .contains(강남역, 양재역, 판교역);
     }
@@ -87,7 +87,7 @@ public class SectionAcceptanceTest extends AcceptanceTest {
         // then
         // 지하철 노선이 추가 됨
         assertThat(sectionAddResponse.statusCode()).isEqualTo(HttpStatus.OK.value());
-        assertThat(findUpdateLineResponse.getStations().size()).isEqualTo(3);
+        assertThat(findUpdateLineResponse.getStations()).hasSize(3);
         assertThat(findUpdateLineResponse.getStations().stream().map(StationResponse::getName))
                 .contains(강남역, 양재역, 판교역);
     }
@@ -115,7 +115,7 @@ public class SectionAcceptanceTest extends AcceptanceTest {
         // then
         // 지하철 노선이 추가 됨
         assertThat(sectionAddResponse.statusCode()).isEqualTo(HttpStatus.OK.value());
-        assertThat(findUpdateLineResponse.getStations().size()).isEqualTo(3);
+        assertThat(findUpdateLineResponse.getStations()).hasSize(3);
         assertThat(findUpdateLineResponse.getStations().stream().map(StationResponse::getName))
                 .contains(강남역, 양재역, 판교역);
     }
@@ -191,7 +191,7 @@ public class SectionAcceptanceTest extends AcceptanceTest {
         // then
         // 지하철 구간 삭제 됨
         assertThat(sectionRemoveResponse.statusCode()).isEqualTo(HttpStatus.OK.value());
-        assertThat(findUpdateLineResponse.getStations().size()).isEqualTo(2);
+        assertThat(findUpdateLineResponse.getStations()).hasSize(2);
         assertThat(findUpdateLineResponse.getStations().stream().map(StationResponse::getName)).doesNotContain(판교역);
     }
 
@@ -212,7 +212,7 @@ public class SectionAcceptanceTest extends AcceptanceTest {
         // then
         // 지하철 구간 삭제 됨
         assertThat(sectionRemoveResponse.statusCode()).isEqualTo(HttpStatus.INTERNAL_SERVER_ERROR.value());
-        assertThat(findUpdateLineResponse.getStations().size()).isEqualTo(2);
+        assertThat(findUpdateLineResponse.getStations()).hasSize(2);
         assertThat(findUpdateLineResponse.getStations().stream().map(StationResponse::getName))
                 .contains(양재역, 강남역);
     }

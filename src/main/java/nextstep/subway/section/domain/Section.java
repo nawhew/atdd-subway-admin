@@ -106,6 +106,10 @@ public class Section extends BaseEntity {
         return this.getUpStation().getId().equals(stationId);
     }
 
+    public boolean isEqualsDownStationId(Long stationId) {
+        return this.getDownStation().getId().equals(stationId);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

@@ -15,8 +15,8 @@ import java.util.stream.Collectors;
 
 @Embeddable
 public class Sections {
-    @Transient private static int DELETE_AND_COMBINE_SECTION_SIZE = 2;
-    @Transient private static int DELETE_SECTION_SIZE = 1;
+    private static int DELETE_AND_COMBINE_SECTION_SIZE = 2;
+    private static int DELETE_SECTION_SIZE = 1;
 
     @JsonBackReference
     @OneToMany(mappedBy = "line", cascade = CascadeType.ALL)
@@ -126,8 +126,8 @@ public class Sections {
      */
     private List<Section> findSectionsByStationId(Long stationId) {
         return this.sections.stream().filter(section
-                -> section.getUpStationId().equals(stationId)
-                || section.getDownStationId().equals(stationId))
+                -> section.isEqualsUpStationId(stationId)
+                || section.isEqualsDownStationId(stationId))
                 .collect(Collectors.toList());
     }
 

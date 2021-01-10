@@ -90,7 +90,7 @@ public class LineController {
      * @return
      */
     @DeleteMapping(value = "/{lineId}/sections", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity addSection(@PathVariable(value = "lineId") Long lineId
+    public ResponseEntity removeSection(@PathVariable(value = "lineId") Long lineId
             , @RequestParam(value = "stationId") Long stationId) {
         this.lineService.removeSectionByStation(lineId, stationId);
         return ResponseEntity.ok().build();
